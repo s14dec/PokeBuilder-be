@@ -38,5 +38,5 @@ app.use("/PokeBuilder", routes.pokeBuilder);
 
 // Port
 app.listen(port, () => {
-  console.log("Welcome to Pley!", port);
+  console.log("Welcome to PokeBuilder!", port);
 });
