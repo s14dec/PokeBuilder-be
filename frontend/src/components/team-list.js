@@ -7,8 +7,8 @@ export const TeamList = props => {
     `https://img.pokemondb.net/sprites/black-white/anim/normal/${member}.gif`;
   return (
     <div>
-      <h3>My Team:</h3>
-      {props.team.length < 1 ? <p>You haven't added any Pokemon yet!</p> : ""}
+      <h3 style={{color: 'white'}}>My Team:</h3>
+      {props.team.length < 1 ? <p style={{color: 'white'}}>You haven't added any Pokemon yet!</p> : ""}
       <Team>
         {props.team.map(member => (
           <li key={Shortid.generate()}>

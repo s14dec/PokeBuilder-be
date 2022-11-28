@@ -1,3 +1,3 @@
 module.exports = {
-  team: require("./team.ctrls")
+  pokeBuilder: require("./team.ctrls")
 };

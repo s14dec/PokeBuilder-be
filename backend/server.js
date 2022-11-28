@@ -16,7 +16,6 @@ const whitelist = ["http://localhost:3000", "http://localhost:3001", `${process.
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) {
-      //for bypassing postman req with  no origin
       return callback(null, true);
     }
     if (whitelist.indexOf(origin) !== -1) {
@@ -34,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 
-app.use("/PokeBuilder", routes.pokeBuilder);
+app.use("/pokeBuilder", routes.pokeBuilder);
 
 // Port
 app.listen(port, () => {

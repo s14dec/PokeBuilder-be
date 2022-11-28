@@ -13,7 +13,7 @@ const index = (req, res) => {
 
 // index route
 const getById = (req, res) => {
-    db.Team.find({ recipeId: req.params.id }, (error, team) => {
+    db.Team.find({ teamId: req.params.id }, (error, team) => {
       if (error) return res.status(404).json({ error: error.message });
       return res.status(200).json({
         team,

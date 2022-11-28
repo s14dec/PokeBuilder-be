@@ -56,8 +56,8 @@ export default class Builder extends Component {
   render() {
     return (
           <Main>
-            <h1 style={{ textAlign: "center" }}>Pokemon Black/White Team Builder</h1>
-            <p style={{ textAlign: "center" }}>
+            <h1 style={{ textAlign: "center", color: 'white' }}>Pokemon Black/White Team Builder</h1>
+            <p style={{ textAlign: "center", color: 'white' }}>
               Create your Unova dream team!
             </p>
             <PokemonSelect>
