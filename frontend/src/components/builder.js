@@ -10,7 +10,6 @@ export default class Builder extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
       pokemon: [],
       value: "",
       team: [],
@@ -31,7 +30,6 @@ export default class Builder extends Component {
     const pokemon = [];
     pokemonData.map(data => pokemon.push(data.pokemon_species.name));
     this.setState({
-      isLoading: false,
       pokemon
     });
   }
@@ -57,17 +55,13 @@ export default class Builder extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.isLoading ? (
-          <div />
-        ) : (
-          <div>
-            <h1 style={{ textAlign: "center" }}>Pokemon Team Builder</h1>
+          <Main>
+            <h1 style={{ textAlign: "center" }}>Pokemon Black/White Team Builder</h1>
             <p style={{ textAlign: "center" }}>
-              Select from the dropdown, or type here to choose your Pokemon!
+              Create your Unova dream team!
             </p>
-            <div>
-              <div
+            <PokemonSelect>
+              <Autocomplete
                 items={this.state.pokemon.map(item => ({
                   id: item,
                   label: item
@@ -92,16 +86,61 @@ export default class Builder extends Component {
                   </div>
                 )}
               />
-            </div>
+            </PokemonSelect>
             {this.state.isFull ? <div>Your team is already full! Only 6 Pokemon per team.</div> : ""}
-            <div title="My Team:" team={this.state.team} />
-            <div warn onClick={this.clearPokemon}>
-              Restart
-            </div>
-          </div>
+            <TeamList title="My Team:" team={this.state.team} />
+            <Button warn onClick={this.clearTeam}>
+              Reset Team
+            </Button>
+          </Main>
         )}
-      </div>
-    );
+      }
+
+
+const Main = styled.div`
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 1rem 2rem;
+`;
+
+const PokemonSelect = styled.div`
+  width: 200px;
+  margin: 32px auto 48px;
+
+  input {
+    border-radius: 3px;
+    box-shadow: 0 5px 3px 3px rgba(0, 0, 0, 0.25);
+    padding: 12px;
+    border: none;
+    width: 200px;
   }
-}
+
+  li {
+    cursor: pointer;
+    list-style: none;
+    text-transform: capitalize;
+    padding: 4px 8px;
+  }
+`;
+
+const Button = styled.div`
+  background: ${props => (props.warn ? "#f64f37" : "#3e9fe6")};
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  letter-spacing: 0.067em;
+  display: inline-block;
+  margin: 1rem 2rem 1rem 0;
+  padding: 0.75rem 1.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.1s;
+
+  &:hover {
+    background: ${props => (props.warn ? "#d8242b" : "#235b94")};
+  }
+`;
+
 
