@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-const Pokemon = require('./pokemon')
 
 const Schema = mongoose.Schema;
 
 const teamSchema = new Schema({
-  pokemon: [Pokemon],
+  name: { type: String, required: true },
+  teamList: { type: String },
   teamId: { type: String }
 });
 
